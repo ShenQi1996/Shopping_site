@@ -29,7 +29,7 @@ const Navbar = props => {
   } else {
     signIn = (
       <div>
-        <a href="#" target="_blank">
+        <a href="/" target="_blank">
           Metailmen
         </a>
         <button onClick={handleModal}>Sign In</button>

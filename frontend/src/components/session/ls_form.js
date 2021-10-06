@@ -176,7 +176,6 @@ const LS_form = props => {
 
     default:
       return null;
-      break;
   }
 
   return <div>{form}</div>;

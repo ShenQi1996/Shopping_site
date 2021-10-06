@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
-import LS_form from "../session/ls_form";
+import LS_FORM from "../session/ls_form";
 
 const Modal = props => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const Modal = props => {
       modalForm = (
         <div>
           <button onClick={handleModal}>X</button>
-          <LS_form form="Sign In" />
+          <LS_FORM form="Sign In" />
         </div>
       );
       break;
@@ -25,7 +25,7 @@ const Modal = props => {
       modalForm = (
         <div>
           <button onClick={handleModal}>X</button>
-          <LS_form form="Sign Up" />
+          <LS_FORM form="Sign Up" />
         </div>
       );
       break;
