@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
-
+import { fetchProducts } from "../../actions/product_actions";
 const Navbar = props => {
   const dispatch = useDispatch();
   const loggedIn = useSelector(state => state.session.isAuthenticated);
@@ -12,6 +12,10 @@ const Navbar = props => {
     e.preventDefault();
     dispatch(openModal(e.target.innerText));
   };
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   const logoutUser = e => {
     e.preventDefault();
