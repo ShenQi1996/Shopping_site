@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const fetchProducts = () => {
-  return axios.get("/api/products/");
+  return axios.get("/api/products/allProducts");
 };
 
 export const fetchProduct = productId => {

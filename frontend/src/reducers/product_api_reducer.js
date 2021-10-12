@@ -7,20 +7,11 @@ import {
   EDIT_PRODUCT,
 } from "../actions/product_actions";
 
-const startState = [
-  {
-    title: "",
-    price: 0,
-    description: "",
-    quantity: 0,
-    user: "",
-  },
-];
+const startState = [];
 
 const productsAPIReducer = (state = startState, action) => {
   Object.freeze(state);
-  let newState = { ...state };
-  debugger;
+  let newState = [...state];
   switch (action.type) {
     case RECEIVE_PRODUCTS:
       return action.products.data;
@@ -28,7 +19,17 @@ const productsAPIReducer = (state = startState, action) => {
       newState = action.product.data;
       return newState;
     case RECEIVE_NEW_PRODUCT:
-      return (newState = { ...state, [action.product]: action.product });
+      return [...newState, action.product.data];
+    case DELETE_PRODUCT:
+      const filtered = newState.filter(
+        product => product._id === action.productId.data
+      );
+      for (let i = 0; i < filtered.length; i++) {
+        if (newState[i]._id === filtered[i]._id) {
+          delete newState[i];
+        }
+      }
+      return newState;
     default:
       return state;
   }

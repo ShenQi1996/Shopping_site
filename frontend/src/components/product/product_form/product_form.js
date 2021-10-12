@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct } from "../../../actions/product_actions";
 
 const Product_form = props => {
   const [product, setProduct] = useState({
@@ -21,7 +20,7 @@ const Product_form = props => {
   const handleSubmit = e => {
     e.preventDefault();
     setProduct(product => ({ ...product, user: "615f87558ceea804088f0d9d" }));
-    dispatch(createProduct(product));
+    dispatch(props.createProduct(product));
   };
 
   return (

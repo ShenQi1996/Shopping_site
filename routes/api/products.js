@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../../models/Product");
 
-router.get("/", (req, res) => {
+router.get("/allProducts", (req, res) => {
   Product.find()
     .then(products => res.json(products))
     .catch(err =>
-      res.status(404).json({ noproductsfound: "No Products were found" })
+      res.status(404).json({ noproductsfound: "No Products were found" + err })
     );
 });
 
@@ -34,13 +34,13 @@ router.post("/add", (req, res) => {
 
   newProduct
     .save()
-    .then(product => res.json("Product has been added" + product))
-    .catch(err => res.status(404).json("Error:" + err));
+    .then(product => res.json(product))
+    .catch(err => res.status(404).json(err));
 });
 
 router.delete("/:id", (req, res) => {
   const product = Product.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Product has been deleted"))
+    .then(() => res.json(req.params.id))
     .catch(err => res.status(404).json("Product can not bee deleted" + err));
 });
 
@@ -54,7 +54,7 @@ router.patch("/update/:id", (req, res) => {
       product.user = req.body.user;
       product
         .save()
-        .then(product => res.json("Product has been updated" + product))
+        .then(product => res.json(product))
         .catch(err => res.status(404).json("Error" + err));
     })
     .catch(err => res.status(404).json("Product were not found" + err));

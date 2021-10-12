@@ -37,25 +37,28 @@ const changeProduct = productId => ({
   productId,
 });
 
-export const fetchProducts = () => dispatch =>
-  ProductAPIUtil.fetchProducts()
+export const fetchProducts = () => dispatch => {
+  return ProductAPIUtil.fetchProducts()
     .then(products => dispatch(receiveProducts(products)))
     .catch(err => console.log(err));
+};
 
-export const fetchProduct = productId => dispatch =>
-  ProductAPIUtil.fetchProduct(productId)
+export const fetchProduct = productId => dispatch => {
+  return ProductAPIUtil.fetchProduct(productId)
     .then(product => dispatch(receiveProduct(product)))
     .catch(err => console.log(err));
+};
 
 export const fetchUserProducts = userId => dispatch =>
   ProductAPIUtil.fetchUserProducts(userId)
     .then(products => dispatch(receiveUserProducts(products)))
     .catch(err => console.log(err));
 
-export const createProduct = data => dispatch =>
-  ProductAPIUtil.createProduct(data)
+export const createProduct = data => dispatch => {
+  return ProductAPIUtil.createProduct(data)
     .then(product => dispatch(receiveNewProduct(product)))
     .catch(err => console.log(err));
+};
 
 export const deleteProduct = productId => dispatch =>
   ProductAPIUtil.deleteProduct(productId)
