@@ -49,7 +49,6 @@ router.post(
       description: req.body.description,
       user: req.user.id,
     });
-
     newPost.save().then(post => res.json(post));
   }
 );

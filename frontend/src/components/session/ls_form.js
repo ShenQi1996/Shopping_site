@@ -50,15 +50,13 @@ const LS_form = props => {
   const handleSignUp = e => {
     e.preventDefault();
     if (errors.length === 0) {
-      dispatch(signup(user))
-        .then(dispatch(login(user)))
-        .then(dispatch(closeModal()));
+      dispatch(signup(user)).then(() => dispatch(login(user)));
     }
   };
 
   const demoSubmit = () => {
     const demoUser = {
-      email: "test@gmail.com",
+      email: "qisam@gmail.com",
       password: "123456789",
     };
 
@@ -73,6 +71,14 @@ const LS_form = props => {
   const formType = props.form;
 
   let form;
+  let err = [];
+
+  if (errors.length === 0) {
+    err = [];
+  } else {
+    err = Object.values(errors);
+    err = err.map((e, i) => <li key={i}>{e}</li>);
+  }
 
   switch (formType) {
     case "Sign In":
@@ -80,6 +86,7 @@ const LS_form = props => {
         <div>
           <h1>Pleasse Sign In</h1>
           <div>
+            <h3> {err}</h3>
             <form>
               <label>
                 Email:
@@ -121,6 +128,7 @@ const LS_form = props => {
         <div>
           <h1>Sign Up Form</h1>
           <div>
+            <h3>{err} </h3>
             <form>
               <label>
                 Email:

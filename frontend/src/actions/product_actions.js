@@ -60,10 +60,11 @@ export const createProduct = data => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const deleteProduct = productId => dispatch =>
-  ProductAPIUtil.deleteProduct(productId)
+export const deleteProduct = productId => dispatch => {
+  return ProductAPIUtil.deleteProduct(productId)
     .then(productId => dispatch(removeProduct(productId)))
     .catch(err => console.log(err));
+};
 
 export const editProduct = productId => dispatch =>
   ProductAPIUtil.editProduct(productId)

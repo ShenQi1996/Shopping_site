@@ -7,7 +7,7 @@ const Product_form = props => {
     price: 0,
     description: "",
     quantity: 0,
-    user: "",
+    user: "615f87558ceea804088f0d9d",
   });
 
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Product_form = props => {
   const { title, price, description, quantity } = product;
   const handleSubmit = e => {
     e.preventDefault();
-    setProduct(product => ({ ...product, user: "615f87558ceea804088f0d9d" }));
+    // setProduct(product => ({ ...product, user: "615f87558ceea804088f0d9d" }));
     dispatch(props.createProduct(product));
   };
 

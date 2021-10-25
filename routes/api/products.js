@@ -3,6 +3,7 @@ const router = express.Router();
 const Product = require("../../models/Product");
 
 router.get("/allProducts", (req, res) => {
+  debugger;
   Product.find()
     .then(products => res.json(products))
     .catch(err =>
@@ -32,6 +33,7 @@ router.post("/add", (req, res) => {
     user,
   });
 
+  debugger;
   newProduct
     .save()
     .then(product => res.json(product))
@@ -39,6 +41,7 @@ router.post("/add", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  debugger;
   const product = Product.findByIdAndDelete(req.params.id)
     .then(() => res.json(req.params.id))
     .catch(err => res.status(404).json("Product can not bee deleted" + err));

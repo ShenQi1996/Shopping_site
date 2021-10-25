@@ -22,13 +22,14 @@ const productsAPIReducer = (state = startState, action) => {
       return [...newState, action.product.data];
     case DELETE_PRODUCT:
       const filtered = newState.filter(
-        product => product._id === action.productId.data
+        product => product._id !== action.productId.data
       );
-      for (let i = 0; i < filtered.length; i++) {
-        if (newState[i]._id === filtered[i]._id) {
+      for (let i = 0; i < newState.length; i++) {
+        if (newState[i]._id === action.productId.data) {
           delete newState[i];
         }
       }
+      newState = filtered;
       return newState;
     default:
       return state;
