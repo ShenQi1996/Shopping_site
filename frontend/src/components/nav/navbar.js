@@ -22,20 +22,24 @@ const Navbar = props => {
   if (loggedIn) {
     signIn = (
       <div>
-        <a href="/">SellALL</a>
-        <NavLink to="/products" activeClassName="">
-          Products
-        </NavLink>
+        <div>
+          <a href="/">SellALL</a>
+          <NavLink to="/products" activeClassName="">
+            Products
+          </NavLink>
+        </div>
         <button onClick={logoutUser}>Sign Out</button>
       </div>
     );
   } else {
     signIn = (
       <div>
-        <a href="/">SellALL</a>
-        <NavLink to="/products" activeClassName="">
-          Products
-        </NavLink>
+        <div>
+          <a href="/">SellALL</a>
+          <NavLink to="/products" activeClassName="">
+            Products
+          </NavLink>
+        </div>
         <button onClick={handleModal}>Sign In</button>
         <button onClick={handleModal}>Sign Up</button>
       </div>
