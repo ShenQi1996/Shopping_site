@@ -66,7 +66,9 @@ export const deleteProduct = productId => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const editProduct = productId => dispatch =>
-  ProductAPIUtil.editProduct(productId)
+export const editProduct = productId => dispatch => {
+  debugger;
+  return ProductAPIUtil.editProduct(productId)
     .then(product => dispatch(changeProduct(product)))
     .catch(err => console.log(err));
+};

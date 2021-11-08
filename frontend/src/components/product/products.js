@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
   createProduct,
   deleteProduct,
+  editProduct,
 } from "../../actions/product_actions";
 import Product_form from "./product_form/product_form";
 import ProductPage from "./product_page";
 
 const Products = props => {
+  const signIn = useSelector(state => state.session.isSignedIn);
   const Products = useSelector(state => state.products);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,6 +21,7 @@ const Products = props => {
     <ProductPage
       key={i}
       deleteProduct={deleteProduct}
+      editProduct={editProduct}
       id={ele._id}
       title={ele.title}
       price={ele.price}
@@ -27,6 +30,18 @@ const Products = props => {
       user={ele.user}
     />
   ));
+  let CreateForm;
+
+  if (signIn) {
+    CreateForm = (
+      <div>
+        <h1>Don't have a product yet? </h1>
+        <Product_form createProduct={createProduct} create="true" />;
+      </div>
+    );
+  } else {
+    CreateForm = <h1>SignIn to create your own Product</h1>;
+  }
 
   return (
     <div>
@@ -34,10 +49,7 @@ const Products = props => {
       <div>
         <h1>Products </h1>
         {product}
-        <div>
-          <h1>create your product</h1>
-          <Product_form createProduct={createProduct} />
-        </div>
+        {CreateForm}
       </div>
     </div>
   );

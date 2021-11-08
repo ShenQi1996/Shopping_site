@@ -24,10 +24,10 @@ const Navbar = props => {
       <div>
         <div>
           <a href="/">SellALL</a>
-          <NavLink to="/products" activeClassName="">
-            Products
-          </NavLink>
         </div>
+        <NavLink to="/products" activeClassName="">
+          Products
+        </NavLink>
         <button onClick={logoutUser}>Sign Out</button>
       </div>
     );
@@ -36,9 +36,6 @@ const Navbar = props => {
       <div>
         <div>
           <a href="/">SellALL</a>
-          <NavLink to="/products" activeClassName="">
-            Products
-          </NavLink>
         </div>
         <button onClick={handleModal}>Sign In</button>
         <button onClick={handleModal}>Sign Up</button>

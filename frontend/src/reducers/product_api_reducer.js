@@ -31,6 +31,15 @@ const productsAPIReducer = (state = startState, action) => {
       }
       newState = filtered;
       return newState;
+    case EDIT_PRODUCT:
+      debugger;
+      for (let i = 0; i < newState.length; i++) {
+        if (newState[i]._id == action.productId.data._id) {
+          newState[i] = action.productId.data;
+        }
+      }
+
+      return newState;
     default:
       return state;
   }
