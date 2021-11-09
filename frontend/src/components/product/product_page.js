@@ -16,7 +16,6 @@ const ProductPage = props => {
   if (Edit) {
     edit = (
       <div>
-        <h1>Edit works</h1>
         <Product_form
           create="false"
           setEdit={setEdit}

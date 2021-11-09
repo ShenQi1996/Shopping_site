@@ -3,11 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Product_form = props => {
   const userId = useSelector(state => state.session.user.id);
+  let test;
+  if (props.create === "true") {
+    test = {
+      title: "",
+      price: 0,
+      description: "",
+      quantity: 0,
+    };
+  } else {
+    test = {
+      title: props.title,
+      price: props.price,
+      description: props.description,
+      quantity: props.quantity,
+    };
+  }
   const [product, setProduct] = useState({
-    title: "",
-    price: 0,
-    description: "",
-    quantity: 0,
+    title: test.title,
+    price: test.price,
+    description: test.description,
+    quantity: test.quantity,
     user: userId,
   });
 
@@ -27,7 +43,6 @@ const Product_form = props => {
   };
 
   const editSubmit = e => {
-    debugger;
     e.preventDefault();
     product.id = props.id;
     dispatch(props.editProduct(product)).then(props.setEdit(false));

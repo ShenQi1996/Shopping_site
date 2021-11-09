@@ -10,7 +10,7 @@ import Product_form from "./product_form/product_form";
 import ProductPage from "./product_page";
 
 const Products = props => {
-  const signIn = useSelector(state => state.session.isSignedIn);
+  const signIn = useSelector(state => state.session.isAuthenticated);
   const Products = useSelector(state => state.products);
   const dispatch = useDispatch();
   useEffect(() => {
