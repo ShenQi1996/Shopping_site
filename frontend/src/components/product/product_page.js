@@ -30,7 +30,7 @@ const ProductPage = props => {
       </div>
     );
   } else {
-    edit = <h1>Edit is false</h1>;
+    edit = <div></div>;
   }
   return (
     <div>

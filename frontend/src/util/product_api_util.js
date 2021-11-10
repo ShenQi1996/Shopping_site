@@ -21,6 +21,5 @@ export const deleteProduct = productId => {
 };
 
 export const editProduct = product => {
-  debugger;
   return axios.patch(`/api/products/update/${product.id}`, product);
 };

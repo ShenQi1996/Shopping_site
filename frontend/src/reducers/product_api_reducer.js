@@ -38,6 +38,8 @@ const productsAPIReducer = (state = startState, action) => {
         }
       }
       return newState;
+    case RECEIVE_USER_PRODUCTS:
+      return action.products.data;
     default:
       return state;
   }

@@ -33,7 +33,11 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(user => {
-              const payload = { id: user.id, email: user.email };
+              const payload = {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+              };
 
               jwt.sign(
                 payload,
@@ -44,6 +48,7 @@ router.post("/register", (req, res) => {
                     success: true,
                     token: "Bearer " + token,
                     id: user.id,
+                    name: user.name,
                   });
                 }
               );
@@ -56,7 +61,6 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  debugger;
   const { errors, isValid } = validateLoginInput(req.body);
 
   if (!isValid) {
@@ -67,7 +71,6 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
 
   User.findOne({ email }).then(user => {
-    debugger;
     if (!user) {
       errors.email = "This user does not exist";
       return res.status(400).json(errors);
@@ -75,7 +78,11 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id: user.id, email: user.email };
+        const payload = {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+        };
 
         jwt.sign(
           payload,
@@ -86,6 +93,7 @@ router.post("/login", (req, res) => {
               success: true,
               token: "Bearer " + token,
               id: user.id,
+              name: user.name,
             });
           }
         );

@@ -44,7 +44,6 @@ router.delete("/:id", (req, res) => {
 });
 
 router.patch("/update/:id", (req, res) => {
-  debugger;
   Product.findById(req.params.id)
     .then(product => {
       product.title = req.body.title;

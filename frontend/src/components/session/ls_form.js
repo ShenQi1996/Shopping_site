@@ -59,7 +59,6 @@ const LS_form = props => {
       email: "qisam@gmail.com",
       password: "123456789",
     };
-
     dispatch(login(demoUser)).then(dispatch(closeModal()));
   };
 
