@@ -4,10 +4,9 @@ const startState = [];
 
 const weatherAPIReducer = (state = startState, action) => {
   Object.freeze(state);
-  let newState = [...state];
   switch (action.type) {
     case RECEIVE_WEATHER:
-      return [...newState, action.city.data];
+      return [action.city.data];
     default:
       return state;
   }
